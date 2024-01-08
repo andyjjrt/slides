@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'slides/**'
+permissions:
+  contents: write
 
 jobs:
   changed_files:
