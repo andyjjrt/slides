@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue + TS</title>
-    <script type="module" crossorigin src="/assets/index-8z1a1y6Y.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-fO70TpX6.css">
+    <title>Andy's Slidev Hub</title>
   </head>
   <body>
-    <div id="app"></div>
+    <script>
+      window.onload = (event) => {
+        const url = new URL(window.location);
+        const path = url.pathname.split("/")
+        if(path.length > 1) {
+          window.location.replace(`${url.origin}/${path[0]}`)
+        }else {
+          window.location.replace(url.origin)
+        }
+      };
+    </script>
   </body>
 </html>
