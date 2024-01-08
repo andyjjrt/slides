@@ -4,12 +4,16 @@ on:
   push:
     paths-ignore:
       - 'slides/**'
+permissions:
+  contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
       - uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -23,5 +27,4 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          branch: gh-pages
           folder: dist
