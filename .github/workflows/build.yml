@@ -40,6 +40,9 @@ jobs:
             echo $folder
           done
       
+      - name: Check dist
+        run: ls -la dist
+      
       - name: Update Slides Index
         run: tree -J -L 1 slides -o dist/slides.json
 
