@@ -36,7 +36,7 @@ jobs:
           slides_folders="${{ steps.changes.outputs.slides_files }}"
 
           for folder in $slides_folders; do
-            pnpm run slidev:build slides/$folder/slide.md --out dist/$folder
+            pnpm run slidev:build slides/$folder/slide.md --out ${{ GITHUB_WORKSPACE }}/dist/$folder
             echo $folder
           done
       
