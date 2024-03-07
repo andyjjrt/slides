@@ -29,7 +29,8 @@ jobs:
       - name: Identify changed slides folder
         id: changes
         run: |
-          echo "slides_files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)" >> $GITHUB_OUTPUT
+          files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)
+          echo "slides_files=$files" >> $GITHUB_OUTPUT
 
       - name: Build target file in slides folder
         if: ${{ steps.changes.outputs.slides_files }}
