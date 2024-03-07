@@ -29,14 +29,22 @@ jobs:
       - name: Identify changed slides folder
         id: changes
         run: |
-          echo "::set-output name=slides_files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)"
+          echo "slides_files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)" >> $GITHUB_OUTPUT
+
+      - name: Check if there are changes
+        run: |
+          slides_files="${{ steps.changes.outputs.slides_files }}"
+          if [ -z "$slides_files" ]; then
+            echo "No modified or created files in the slides folder. Skipping the build."
+            exit 0
+          fi
 
       - name: Build target file in slides folder
         run: |
           slides_folders="${{ steps.changes.outputs.slides_files }}"
 
           for folder in $slides_folders; do
-            pnpm run slidev:build slides/$folder/slide.md --out ${{ github.workspace }}/dist/$folder
+            pnpm run slidev:build slides/$folder/slide.md --out ${{ github.workspace }}/dist/$folder --base /$folder/
             echo $folder
           done
       
