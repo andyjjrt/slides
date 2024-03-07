@@ -1,8 +1,7 @@
 [
   {"type":"directory","name":"slides","contents":[
-    {"type":"directory","name":"1121cp1-lab9"},
     {"type":"directory","name":"wsm-project3"}
   ]}
 ,
-  {"type":"report","directories":2,"files":0}
+  {"type":"report","directories":1,"files":0}
 ]
