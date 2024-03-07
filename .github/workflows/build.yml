@@ -48,10 +48,11 @@ jobs:
         if: ${{ steps.changes.outputs.slides_files }}
         run: ls -la dist
       
-      - name: Update Slides Index
-        run: tree -J -L 1 slides -o dist/slides.json
+      # - name: Update Slides Index
+      #   run: tree -J -L 1 slides -o dist/slides.json
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           folder: dist
+          clean: false
