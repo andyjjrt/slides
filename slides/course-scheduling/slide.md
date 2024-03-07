@@ -3,6 +3,9 @@ theme: andyjjrt
 transition: slide-left
 title: Course Scheduling Presentation
 mdc: true
+url: https://slidev.andyjjrt.cc/course-scheduling
+download: true
+routerMode: hash
 ---
 
 # 一言不合就排課

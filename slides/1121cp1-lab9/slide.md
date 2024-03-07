@@ -4,8 +4,9 @@ title: "**Computer Programming 1 Lab**"
 download: true
 transition: slide-left
 layout: cover
-url: https://slidev.andyjjrt.cc/1121cp1lab9
+url: https://slidev.andyjjrt.cc/1121cp1-lab9
 mdc: true
+routerMode: hash
 ---
 
 # Computer Programming 1
