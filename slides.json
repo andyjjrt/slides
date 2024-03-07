@@ -1,9 +1,12 @@
 [
   {"type":"directory","name":"slides","contents":[
+    {"type":"directory","name":"1111cp1lab13"},
+    {"type":"directory","name":"1112cp1-lab1"},
+    {"type":"directory","name":"1112cp2-lab4"},
     {"type":"directory","name":"1121cp1-lab9"},
     {"type":"directory","name":"course-scheduling"},
     {"type":"directory","name":"wsm-project3"}
   ]}
 ,
-  {"type":"report","directories":3,"files":0}
+  {"type":"report","directories":6,"files":0}
 ]
