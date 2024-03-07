@@ -30,7 +30,9 @@ jobs:
         id: changes
         run: |
           files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)
-          echo "slides_files=$files" >> $GITHUB_OUTPUT
+          echo "slides_files<<EOF" >> $GITHUB_OUTPUT
+          echo $files >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Build target file in slides folder
         if: ${{ steps.changes.outputs.slides_files }}
