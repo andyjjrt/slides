@@ -2,7 +2,6 @@
 title: '**Computer Programming 1 Lab**'
 download: true
 layout: cover
-download: true
 mdc: true
 hideInToc: true
 lineNumbers: true

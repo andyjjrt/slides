@@ -3,7 +3,6 @@ title: '**Computer Programming 2 Lab**'
 download: true
 layout: cover
 transition: slide-left
-download: true
 mdc: true
 hideInToc: true
 lineNumbers: true
