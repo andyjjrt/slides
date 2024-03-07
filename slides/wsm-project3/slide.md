@@ -8,6 +8,7 @@ hideInToc: true
 lineNumbers: true
 layout: cover
 url: https://slidev.andyjjrt.cc/wsm-project3
+routerMode: hash
 ---
 
 # WSM-Project3
