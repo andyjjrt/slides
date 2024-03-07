@@ -25,6 +25,23 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Identify changed slides folder
+        id: changes
+        run: |
+          echo "::set-output name=slides_files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)"
+
+      - name: Build target file in slides folder
+        run: |
+          slides_folders="${{ steps.changes.outputs.slides_files }}"
+
+          for folder in $slides_folders; do
+            pnpm run slidev:build slides/$folder/slide.md --out dist/$folder
+            echo $folder
+          done
+      
+      - name: Update Slides Index
+        run: tree -J -L 1 slides -o dist/slides.json
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:

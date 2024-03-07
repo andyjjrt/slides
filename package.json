@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "slidev:build": "slidev build"
   },
   "dependencies": {
     "@slidev/cli": "^0.46.1",
