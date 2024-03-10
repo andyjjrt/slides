@@ -51,8 +51,17 @@ jobs:
       # - name: Update Slides Index
       #   run: tree -J -L 1 slides -o dist/slides.json
 
+      - name: Identify changed slides folder
+        id: not_changed
+        run: |
+          n_files=$(echo "${{ steps.changes.outputs.slides_files }}" | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}'))
+          echo "slides_not_changed<<EOF" >> $GITHUB_OUTPUT
+          echo $n_files >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo $n_files
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           folder: dist
-          clean: false
+          clean-exclude: ${{ steps.not_changed.outputs.slides_not_changed }}
