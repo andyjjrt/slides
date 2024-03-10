@@ -66,14 +66,14 @@ jobs:
           else
               files=$(ls -d slides/*)
           fi
-          n_files=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
-          echo "slides_not_changed<<EOF" >> $GITHUB_OUTPUT
-          echo $n_files >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo $n_files
+          N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
+          echo "N_FILES<<EOF" >> $GITHUB_ENV
+          echo $N_FILES >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          echo $GITHUB_ENV
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           folder: dist
-          clean-exclude: ${{ steps.not_changed.outputs.slides_not_changed }}
+          clean-exclude: ${{ env.N_FILES }}
