@@ -26,6 +26,12 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Create sub-directory
+        run: |
+          cd slides
+          find . -type d -exec mkdir -p ${{ github.workspace }}/dist/{} \;
+          cd ${{ github.workspace }}
+
       - name: Identify changed slides folder
         id: changes
         run: |
@@ -51,7 +57,7 @@ jobs:
       # - name: Update Slides Index
       #   run: tree -J -L 1 slides -o dist/slides.json
 
-      - name: Identify changed slides folder
+      - name: Identify unchanged folder
         id: not_changed
         run: |
           n_files=$(echo "${{ steps.changes.outputs.slides_files }}" | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}'))
