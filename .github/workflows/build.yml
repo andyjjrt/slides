@@ -66,10 +66,7 @@ jobs:
           else
               files=$(ls -d slides/*)
           fi
-          N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
-          N_FILES="${N_FILES//'%'/'%25'}"
-          N_FILES="${N_FILES//$'\n'/'%0A'}"
-          N_FILES="${N_FILES//$'\r'/'%0D'}"
+          N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|--exclude dist/|")
           echo "N_FILES<<EOF" >> $GITHUB_ENV
           echo $N_FILES >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
