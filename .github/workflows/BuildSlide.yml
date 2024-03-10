@@ -81,7 +81,7 @@ jobs:
           folder: dist
           clean-exclude: |
             ${{ env.N_FILES }}
-            assets
-            index.html
-            vite.svg
+            /assets
+            /index.html
+            /vite.svg
             
