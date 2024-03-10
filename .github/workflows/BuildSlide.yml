@@ -3,7 +3,7 @@ name: Build Slide
 on:
   push:
     paths:
-      - 'slides/*'
+      - 'slides/**'
 permissions:
   contents: write
 

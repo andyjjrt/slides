@@ -4,7 +4,7 @@ on:
   push:
     paths-ignore:
       - '.github/workflows/**'
-      - 'slides/*'
+      - 'slides/**'
 permissions:
   contents: write
 
