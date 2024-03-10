@@ -66,10 +66,10 @@ jobs:
           else
               files=$(ls -d slides/*)
           fi
-          N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
+          N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}'))
           echo "N_FILES<<EOF" >> $GITHUB_ENV
           for files in $N_FILES; do
-            echo "$files/" >> $GITHUB_ENV
+            echo "$files" >> $GITHUB_ENV
             echo $files
           done
           echo "EOF" >> $GITHUB_ENV
