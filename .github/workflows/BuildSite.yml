@@ -1,0 +1,47 @@
+name: Build Website
+
+on:
+  push:
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'slides/*'
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Identify unchanged folder
+        id: not_changed
+        run: |
+          N_FILES=$(ls -d slides/* | awk -F'/' '{print $NF}')
+          echo "N_FILES<<EOF" >> $GITHUB_ENV
+          for files in $N_FILES; do
+            echo "$files" >> $GITHUB_ENV
+            echo $files
+          done
+          echo "EOF" >> $GITHUB_ENV
+          echo $N_FILES
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          folder: dist
+          clean-exclude: |
+            ${{ env.N_FILES }}

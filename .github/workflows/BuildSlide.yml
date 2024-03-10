@@ -1,9 +1,9 @@
-name: deploy
+name: Build Slide
 
 on:
   push:
-    # paths-ignore:
-    #   - '.github/workflows/**'
+    paths:
+      - 'slides/*'
 permissions:
   contents: write
 
@@ -23,11 +23,9 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Build
-        run: pnpm run build
-
-      - name: Create sub-directory
+      - name: Create Directory
         run: |
+          mkdir dist
           cd slides
           find . -type d -exec mkdir -p ${{ github.workspace }}/dist/{} \;
           cd ${{ github.workspace }}
@@ -46,6 +44,7 @@ jobs:
           slides_folders="${{ steps.changes.outputs.slides_files }}"
 
           for folder in $slides_folders; do
+            cp -rT template slides/$folder
             pnpm run slidev:build slides/$folder/slide.md --out ${{ github.workspace }}/dist/$folder --base /$folder/
             echo $folder
           done
@@ -53,9 +52,9 @@ jobs:
       - name: Check dist
         if: ${{ steps.changes.outputs.slides_files }}
         run: ls -la dist
-      
-      # - name: Update Slides Index
-      #   run: tree -J -L 1 slides -o dist/slides.json
+
+      - name: Update slides.json
+        run: tree -J -L 1 slides -o ${{ github.workspace }}/dist/slides.json
 
       - name: Identify unchanged folder
         id: not_changed
@@ -72,6 +71,7 @@ jobs:
             echo "$files" >> $GITHUB_ENV
             echo $files
           done
+          echo ""
           echo "EOF" >> $GITHUB_ENV
           echo $N_FILES
 
@@ -81,3 +81,7 @@ jobs:
           folder: dist
           clean-exclude: |
             ${{ env.N_FILES }}
+            assets
+            index.html
+            vite.svg
+            
