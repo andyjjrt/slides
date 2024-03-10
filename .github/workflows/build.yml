@@ -70,10 +70,11 @@ jobs:
           echo "N_FILES<<EOF" >> $GITHUB_ENV
           echo $N_FILES >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          echo $N_FILES
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           folder: dist
-          clean-exclude: ${{ env.N_FILES }}
+          clean-exclude: |
+            ${{ env.N_FILES }}
