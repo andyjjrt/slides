@@ -66,7 +66,7 @@ jobs:
           else
               files=$(ls -d slides/*)
           fi
-          n_files=$(echo "$files" | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
+          n_files=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
           echo "slides_not_changed<<EOF" >> $GITHUB_OUTPUT
           echo $n_files >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
