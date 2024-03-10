@@ -60,7 +60,7 @@ jobs:
       - name: Identify unchanged folder
         id: not_changed
         run: |
-          files=${{ steps.changes.outputs.slides_files }}
+          files="${{ steps.changes.outputs.slides_files }}"
           if [ -n "$files" ]; then
               echo "Result is not empty:"
           else
