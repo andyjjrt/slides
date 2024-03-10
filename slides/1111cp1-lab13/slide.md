@@ -1,22 +1,11 @@
 ---
-title: '**Computer Programming 1 Lab**'
-download: true
-layout: cover
-mdc: true
+_title: '**Computer Programming 1 Lab**'
 hideInToc: true
-lineNumbers: true
-routerMode: hash
+layout: cover
 ---
 
 # Computer Programming 1 Lab
 2022/12/29 Andy Hung
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://slidev.andyjjrt.cc/1111cp1-lab13" target="_blank"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <bx-bxs-slideshow />
-  </a>
-</div>
 
 ---
 
