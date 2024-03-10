@@ -60,7 +60,13 @@ jobs:
       - name: Identify unchanged folder
         id: not_changed
         run: |
-          n_files=$(echo "${{ steps.changes.outputs.slides_files }}" | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
+          files=${{ steps.changes.outputs.slides_files }}
+          if [ -n "$files" ]; then
+              echo "Result is not empty:"
+          else
+              files=$(ls -d slides/*)
+          fi
+          n_files=$(echo "$files" | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}') | sed "s|^|dist/|")
           echo "slides_not_changed<<EOF" >> $GITHUB_OUTPUT
           echo $n_files >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
