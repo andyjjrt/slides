@@ -1,9 +1,9 @@
 import { definePreparserSetup } from "@slidev/types";
 
+// @ts-ignore:next-line
 export default definePreparserSetup((config) => {
   const slidePathSplit = (config as any).filepath.split("/");
   const slideName = slidePathSplit[slidePathSplit.length - 2];
-  console.log(slideName);
   return [
     {
       name: "test preparser",
@@ -19,8 +19,11 @@ export default definePreparserSetup((config) => {
               "mdc: true",
               "lineNumbers: true",
               "routerMode: hash",
-              "theme: andyjjrt",
+              "theme: ../../theme",
               `url: https://slidev.andyjjrt.cc/${slideName}`,
+              "hideInToc: true",
+              "layout: cover",
+              "transition: slide-left",
               `title: ${l.replace(/^_title: */i, "")}`
             );
             continue;
