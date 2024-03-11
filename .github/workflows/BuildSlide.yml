@@ -44,7 +44,6 @@ jobs:
           slides_folders="${{ steps.changes.outputs.slides_files }}"
 
           for folder in $slides_folders; do
-            cp -rT template slides/$folder
             pnpm run slidev:build slides/$folder/slide.md --out ${{ github.workspace }}/dist/$folder --base /$folder/
             echo $folder
           done
