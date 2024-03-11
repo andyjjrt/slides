@@ -9,6 +9,7 @@ lineNumbers: true
 routerMode: hash
 ---
 
+
 # Computer Programming 2 Lab
 2023/02/22 Andy Hung
 
