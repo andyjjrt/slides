@@ -1,7 +1,7 @@
 ---
 _title: '**Computer Programming 1 Lab**'
-hideInToc: true
-layout: cover
+addons:
+  - slidev-addon-addon
 ---
 
 # Computer Programming 1 Lab
