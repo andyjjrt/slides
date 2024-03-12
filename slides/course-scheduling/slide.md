@@ -1,11 +1,7 @@
 ---
-theme: andyjjrt
-transition: slide-left
-title: Course Scheduling Presentation
-mdc: true
-url: https://slidev.andyjjrt.cc/course-scheduling
-download: true
-routerMode: hash
+_title: Course Scheduling Presentation
+addons:
+  - slidev-addon-addon
 ---
 
 

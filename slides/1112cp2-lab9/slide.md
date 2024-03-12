@@ -7,7 +7,8 @@ mdc: true
 hideInToc: true
 lineNumbers: true
 routerMode: hash
-css: tailwind-css
+addons:
+  - slidev-addon-addon
 ---
 
 # Computer Programming 2 Lab

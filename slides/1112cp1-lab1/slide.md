@@ -7,6 +7,8 @@ mdc: true
 hideInToc: true
 lineNumbers: true
 routerMode: hash
+addons:
+  - slidev-addon-addon
 ---
 
 

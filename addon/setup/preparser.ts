@@ -24,8 +24,22 @@ export default definePreparserSetup((config) => {
               "hideInToc: true",
               "layout: cover",
               "transition: slide-left",
+              "fonts:",
+              "  sans: Outfit, Noto Sans TC",
+              "  mono: Ubuntu Mono",
               `title: ${l.replace(/^_title: */i, "")}`
             );
+            i += 12;
+            continue;
+          }
+          if (l === "theme: andyjjrt") {
+            lines.splice(i, 1, "theme: ../../theme");
+            i++;
+            continue;
+          }
+          if (l.match(/^url:/i)) {
+            lines.splice(i, 1, `url: https://slidev.andyjjrt.cc/${slideName}`);
+            i++;
             continue;
           }
           i++;

@@ -1,14 +1,7 @@
 ---
-theme: andyjjrt
-transition: slide-left
-title: WSM-Project3
-download: true
-mdc: true
-hideInToc: true
-lineNumbers: true
-layout: cover
-url: https://slidev.andyjjrt.cc/wsm-project3
-routerMode: hash
+_title: WSM-Project3
+addons:
+  - slidev-addon-addon
 ---
 
 

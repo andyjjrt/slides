@@ -7,6 +7,8 @@ layout: cover
 url: https://slidev.andyjjrt.cc/1121cp1-lab9
 mdc: true
 routerMode: hash
+addons:
+  - slidev-addon-addon
 ---
 
 # Computer Programming 1
