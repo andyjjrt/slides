@@ -67,7 +67,7 @@
 
   blockquote {
     border-left-width: 5px;
-    @apply px-4 py-2 bg-$syntax-bg border-$slidev-theme-primary rounded;
+    @apply px-4 py-2 bg-$slidev-code-background border-$slidev-theme-primary rounded;
   }
 
   blockquote:before {
