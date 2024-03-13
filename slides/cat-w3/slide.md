@@ -1,10 +1,10 @@
 ---
-_title: "滲透測試實務應用"
+_title: "資安檢測技術與實務"
 addons:
   - slidev-addon-addon
 ---
 
-# 滲透測試實務應用
+# 資安檢測技術與實務
 
 Code Review & HostVA tools
 <br />
