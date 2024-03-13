@@ -193,6 +193,12 @@ Merge all arrays into one sorted array in ascending order.
   <img src="/PR.png" class="h-70" />
 </div>
 
+---
+
+# Useful links
+
+- [System Design 101](https://github.com/ecodelearn/ByteByteGoHq-system-design-101)
+
 --- 
 layout: cover
 ---
