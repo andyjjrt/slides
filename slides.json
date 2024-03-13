@@ -7,9 +7,10 @@
     {"type":"directory","name":"1121cp1-lab2"},
     {"type":"directory","name":"1121cp1-lab9"},
     {"type":"directory","name":"1121cp1-week3"},
+    {"type":"directory","name":"1122cp2-lab2"},
     {"type":"directory","name":"course-scheduling"},
     {"type":"directory","name":"wsm-project3"}
   ]}
 ,
-  {"type":"report","directories":9,"files":0}
+  {"type":"report","directories":10,"files":0}
 ]

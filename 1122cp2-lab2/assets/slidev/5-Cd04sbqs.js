@@ -1,0 +1,8 @@
+import{o as n,c as i,k as o,q as t,s as r,A as a,e as s,$ as l}from"../modules/vue-CwmjtZHK.js";import{I as c}from"./default-DsYmg-_7.js";import{b as p,I as e}from"../index-BfOhmem7.js";import{p as d,u,f as h}from"./context-D1h1ITl1.js";import"../modules/shiki-2R7PoEgo.js";const _=s("h1",null,"HW02",-1),k=s("h2",null,"Output",-1),g=s("p",null,"Merge all arrays into one sorted array in ascending order.",-1),m=s("div",{class:"grid grid-cols-2 gap-4 mb-4"},[s("div",null,[s("pre",{class:"shiki shiki-themes one-dark-pro light-plus slidev-code",style:{"--shiki-dark":"#abb2bf","--shiki-light":"#000000","--shiki-dark-bg":"#282c34","--shiki-light-bg":"#FFFFFF"}},[s("code",{class:"language-"},[s("span",{class:"line"},[s("span",null,"3")]),l(`
+`),s("span",{class:"line"},[s("span",null,"3")]),l(`
+`),s("span",{class:"line"},[s("span",null,"1 4 5")]),l(`
+`),s("span",{class:"line"},[s("span",null,"3")]),l(`
+`),s("span",{class:"line"},[s("span",null,"1 3 4")]),l(`
+`),s("span",{class:"line"},[s("span",null,"2")]),l(`
+`),s("span",{class:"line"},[s("span",null,"2 6")])])])]),s("div",null,[s("pre",{class:"shiki shiki-themes one-dark-pro light-plus slidev-code",style:{"--shiki-dark":"#abb2bf","--shiki-light":"#000000","--shiki-dark-bg":"#282c34","--shiki-light-bg":"#FFFFFF"}},[s("code",{class:"language-"},[s("span",{class:"line"},[s("span",null,"1 1 2 3 4 4 5 6")]),l(`
+`),s("span",{class:"line"},[s("span")])])])])],-1),f=s("blockquote",null,[s("p",null,[l("Do not use "),s("code",null,"qsort"),l(" or "),s("code",null,"std::sort"),l(" or other sorting methods.")])],-1),b={__name:"5",setup(F){return d(e),u(),(v,x)=>(n(),i(c,t(r(a(h)(a(e),4))),{default:o(()=>[_,k,g,m,f]),_:1},16))}},C=p(b,[["__file","/@slidev/slides/5.md"]]);export{C as default};
