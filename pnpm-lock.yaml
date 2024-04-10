@@ -6,10 +6,10 @@ settings:
 
 dependencies:
   '@slidev/cli':
-    specifier: ^0.48.1
+    specifier: 0.48.1
     version: 0.48.1(@types/markdown-it@13.0.7)(@types/node@20.11.25)(playwright-chromium@1.42.1)(postcss@8.4.35)
   '@slidev/theme-default':
-    specifier: ^0.21.2
+    specifier: 0.21.2
     version: 0.21.2
   axios:
     specifier: ^1.6.7
@@ -17,9 +17,6 @@ dependencies:
   slidev-addon-addon:
     specifier: link:addon
     version: link:addon
-  slidev-theme-andyjjrt:
-    specifier: ^0.0.2
-    version: 0.0.2
   unocss:
     specifier: ^0.58.5
     version: 0.58.5(postcss@8.4.35)(vite@5.1.5)
@@ -1202,11 +1199,6 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
-  /@slidev/types@0.43.15:
-    resolution: {integrity: sha512-d8V47Z5ZmyBgL/W7S/UHZJRmExK7o57FlSQlm1780VhrRHxuoTojNLFU15k4+CjQ1WJDVZJoyyDxFKmzdDU/CA==}
-    engines: {node: '>=18.0.0'}
-    dev: false
-
   /@slidev/types@0.48.1(postcss@8.4.35)(typescript@5.4.2)(vite@5.1.5):
     resolution: {integrity: sha512-KjUpAUCf2rT3RkSMhQmBhKp4ywYBTcApZ7VljJV/rT7Co3k3YI6k5wtk90y+tcKKkGoXA7lFWMZy/tMN48QlBg==}
     engines: {node: '>=18.0.0'}
@@ -1272,7 +1264,7 @@ packages:
   /@types/hast@3.0.4:
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.2
     dev: false
 
   /@types/http-cache-semantics@4.0.4:
@@ -4808,16 +4800,6 @@ packages:
     dev: false
     optional: true
 
-  /slidev-theme-andyjjrt@0.0.2:
-    resolution: {integrity: sha512-kffc1edo006A/TRAgk8up+58GUT7oriEkNPzveklpkuvAaqTpob7dL2s+h1ZAbQ73Ekdoe3cgY71ljsSV9DKxw==}
-    engines: {node: '>=18.0.0', slidev: '>=0.19.3'}
-    dependencies:
-      '@slidev/types': 0.43.15
-      codemirror-theme-vars: 0.1.2
-      prism-theme-vars: 0.2.4
-      theme-vitesse: 0.7.6
-    dev: false
-
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -4977,11 +4959,6 @@ packages:
 
   /theme-vitesse@0.1.14:
     resolution: {integrity: sha512-b5s+Zpfaw5+djoCJ9AEbcTbpiTlLsOvGM9oblDmmWRGWNqg9oXtEYO/uwubwx77novHBI6zNuwZRHKNlAIBo4A==}
-    engines: {vscode: ^1.43.0}
-    dev: false
-
-  /theme-vitesse@0.7.6:
-    resolution: {integrity: sha512-67s1XWJdXPgqhtuxJ7o02dPx76aLov/aRY5jl3Awwy4yhZDNoHoiA087WEuD6jYh7o6+hF7X+O4nqoBXKMO3Zw==}
     engines: {vscode: ^1.43.0}
     dev: false
 
