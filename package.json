@@ -11,10 +11,9 @@
     "slidev:build": "slidev build"
   },
   "dependencies": {
-    "@slidev/cli": "^0.48.1",
-    "@slidev/theme-default": "^0.21.2",
+    "@slidev/cli": "0.48.1",
+    "@slidev/theme-default": "0.21.2",
     "axios": "^1.6.7",
-    "slidev-theme-andyjjrt": "^0.0.2",
     "slidev-addon-addon": "link:addon",
     "unocss": "^0.58.5",
     "vue": "^3.4.21"

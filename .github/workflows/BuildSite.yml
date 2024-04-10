@@ -5,6 +5,9 @@ on:
     paths-ignore:
       - '.github/workflows/**'
       - 'slides/**'
+      - 'addon/**'
+      - 'theme/**'
+      - 'README.md'
 permissions:
   contents: write
 
