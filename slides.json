@@ -12,8 +12,11 @@
     {"type":"directory","name":"cat-mid"},
     {"type":"directory","name":"cat-w3"},
     {"type":"directory","name":"course-scheduling"},
+    {"type":"directory","name":"summer_school_w3"},
+    {"type":"directory","name":"summer_school_w4"},
+    {"type":"directory","name":"summer_school_w6"},
     {"type":"directory","name":"wsm-project3"}
   ]}
 ,
-  {"type":"report","directories":13,"files":0}
+  {"type":"report","directories":16,"files":0}
 ]
