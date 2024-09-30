@@ -37,7 +37,7 @@ export default definePreparserSetup((config) => {
             i++;
             continue;
           }
-          if (l.match(/^url:/i)) {
+          if (l.match(/^url: https:\/\/slidev.andyjjrt.cc\//i)) {
             lines.splice(i, 1, `url: https://slidev.andyjjrt.cc/${slideName}`);
             i++;
             continue;
