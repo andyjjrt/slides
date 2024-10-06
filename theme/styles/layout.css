@@ -163,7 +163,7 @@
   }
 
   h2 {
-    @apply text-3xl
+    @apply text-3xl mb-2
   }
 
   h3 {
@@ -181,3 +181,6 @@ html.dark{
   color: var(--prism-foreground)
 }
 
+annotation[encoding="application/x-tex"] {
+  display: none;
+}
