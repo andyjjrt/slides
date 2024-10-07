@@ -1,5 +1,8 @@
 ---
 _title: The Llama3 Herd of Models
+themeConfig:
+  primary: '#9fd9f5'
+  primary-dark: '#09384f'
 addons:
   - slidev-addon-addon
 ---
@@ -25,7 +28,7 @@ Advisor: Wen-Chih Peng
 - Solution
 - Experiment 
 - Conclusion
-- References
+- Appendix
 - Q & A
 
 <SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
@@ -131,18 +134,15 @@ layout: cover
     - Use `fasttext` to recognize if a given text would be referenced by Wikipedia.
     - [Roberta-based classifiers]{color=red} trained on [Llama 2]{color=orange} predictions.
   - Code and reasoning data
-    - build domain-specific pipelines that extract code and math-relevant web pages.
+    - Build domain-specific pipelines that extract code and math-relevant web pages.
     - [DistilRoberta models]{color=red} trained on web data annotated by [Llama 2]{color=orange}.
   - Multilingual data: `fasttext`-based model to categorize documents into 176 languages.
 
 <SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
 
 <!--
-To train a quality classifier based on Llama 2, we create a training set of cleaned web documents, describe the quality requirements, and instruct Llama 2’s chat model to determine if the documents meets these requirements. We use DistilRoberta (Sanh et al., 2019) to generate quality scores for each document for efficiency reasons. We experimentally evaluate the efficacy of various quality filtering configurations.
-
-Since the token distribution of code and math is substantially different than that of natural language, these pipelines implement domain-specific HTML extraction, customized text features and heuristics for filtering.
+Model-base和Code data都是由llama2產生的資料集所訓練的classifier
 -->
-
 ---
 
 # Pre-training - Data
@@ -154,6 +154,10 @@ Since the token distribution of code and math is substantially different than th
 
 <SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
 
+<!--
+少量的高品質資料可以助於提升模型能力
+在405B的模型上效果不顯著，證明他的ICL能力足夠
+-->
 ---
 
 # Pre-training - Model
@@ -162,8 +166,8 @@ Since the token distribution of code and math is substantially different than th
 <div>
 
 - Mostly follow llama2
-- All models use GQA now [(34B and 70B only in llama2)]{color=gray500}
-- Use attention mask between different document in the same sequence.
+- All models use GQA now [(34B and 70B only in llama2)]{color=gray500} => Improve performance.
+- Use attention mask between different document in the same sequence. => Avoid impact on very long context.
 - 128k volcabulary size = 100k from `tiktoken` + 28k for non-English languages
 - RoPE frequency increased to 500k => support longer context
 
@@ -185,6 +189,7 @@ Since the token distribution of code and math is substantially different than th
 
 # Pre-training - Scaling Rule
 
+- Determine optimal modal size given pre-training compute budget.
 - The model size and the number of training tokens should be scaled equally.
 - Target: 
   - Determine optimal model size.
@@ -199,14 +204,20 @@ Since the token distribution of code and math is substantially different than th
 
 # Pre-training - Scaling Rule
 
-- Accurately predict downstream benchmark performance:
-  - Establish a correlation between [negative log-likelihood]{color=red} on down stream tasks and the [training FLOPs]{color=red}
-  - Correlate the negative log-likelihood on downstream tasks with task accuracy with scaling law models and llama2 models.
+- Establish a correlation between [negative log-likelihood]{color=red} on down stream tasks and the [training FLOPs]{color=red}
+  - Given $3.8 * 10^{25}$ FLOPs suggests [402B]{color=red} parameters and [16.55T]{color=red} tokens.
+- Correlate the negative log-likelihood on downstream tasks with task accuracy with scaling law models and llama2 models.
 
 ![](/llama3-scaling-rule.png)
 
 <SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
 
+<!--
+1. 透過不同實驗組合畫出圖，對於每個compute budget套用一個一元二次方程式算出最低點 => compute-optimal
+1.1. Model size & Training Token 的效益會逐漸降低
+2. 映射點到一條回歸線(原始Scaling rule)，得出 (α,A) = (0.53,0.29)
+3, 4. 透過ARC Challenge benchmark來推估flagship model的表現，最後證明事實的確如此
+-->
 ---
 
 # Pre-training - Training Recipe
@@ -536,9 +547,14 @@ layout: cover
 
 # Conclusion
 
-<div class="flex justify-center">
-  <img src="/MMLU-date.png" class="w-2/3" />
+<div class="flex flex-col items-center">
+  <img src="/MMLU-date.png" class="w-[65%]" />
+
+  [@maximelabonne](https://x.com/maximelabonne)
+
 </div>
+
+
 
 <SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
 
@@ -552,6 +568,7 @@ layout: cover
 ## [Pros]{color=green}
 
 - Use scaling law to predict flagship model performance.
+- Having long context window.
 - Close the gap between closed-source and open-weight models.
 
 </div>
@@ -563,6 +580,16 @@ layout: cover
 
 </div>
 </div>
+
+<SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
+
+---
+
+# Appendix
+
+- Training Infrastructure
+- Vision Experiments
+- Speech Experiments
 
 <SlideCurrentNo class="absolute bottom-4 right-6 text-sm text-gray-400" />
 
