@@ -8,6 +8,7 @@ mdc: true
 fonts:
   sans: Outfit, Noto Sans TC
   mono: Ubuntu Mono
+baseURL: https://slidev.andyjjrt.cc/
 ##########################
 title: Efficient Memory Management for Large Language Model Serving with PagedAttention
 name: page-attention
