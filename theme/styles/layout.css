@@ -181,6 +181,6 @@ html.dark{
   color: var(--prism-foreground)
 }
 
-annotation[encoding="application/x-tex"] {
+span.katex-html {
   display: none;
 }
