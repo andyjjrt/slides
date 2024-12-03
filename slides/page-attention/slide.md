@@ -16,13 +16,13 @@ themeConfig:
   glowHue: -30
 ---
 
+SOSP 2023
+
 # **Efficient Memory Management for Large Language Model Serving with PagedAttention**
 
 Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody Hao Yu, Joseph E. Gonzalez, Hao Zhang, Ion Stoica
-<br />
 
-Presenter: Jun-Chen Hung
-
+Presenter: Jun-Chen Hung<br />
 2024/12/04
 
 [https://arxiv.org/pdf/2309.06180](https://arxiv.org/pdf/2309.06180){class="abs-bl bottom-6 left-15 text-gray text-sm"}
