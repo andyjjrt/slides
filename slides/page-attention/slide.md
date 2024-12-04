@@ -405,7 +405,7 @@ glowHue: 150
     <img src="/Experiment/Ablation1.png" />
   </div>
   <div>
-    <img src="/Experiment/Ablation1.png" />
+    <img src="/Experiment/Ablation2.png" />
   </div>
 </div>
 
