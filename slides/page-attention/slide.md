@@ -136,6 +136,7 @@ glowHue: -120
   - Single token KV cache of 13B OPT model: [800KB]{color=red}
     - [2]{color=red} (k&v vectors) × [5120]{color=red} (hidden state size) × [40]{color=red} (number of layers) × [2]{color=red} (bytes per FP16).
   - 2048 tokens costs [1.6GB]{color=orange} KV cache size
+  - Memory will become an increasingly significant bottleneck
 - **Complex decoding algorithms**
   - LLM services offer a range of decoding algorithms for users to select <br /> from, each with varying implications for memory management <br /> complexity.
 - **Scheduling for unknown input & output lengths.**
@@ -254,7 +255,7 @@ transition: fade
 
 1. Which blocks should it evict?
 - Apply **all-or-nothing** eviction policy
-      - Multiple sequences within one request are gang-scheduled as a **Sequence Group**.
+  - Multiple sequences within one request are gang-scheduled as a **Sequence Group**.
 
 
 ---
@@ -334,6 +335,12 @@ glowHue: 150
 
 <img src="/Experiment/Setup.png"  class="abs-tr top-24 right-5 w-96" />
 
+
+<!--
+- 13B, 66B: common size, 175B: GPT3
+- shareGPT = 5.8x alpaca
+-->
+
 ---
 transition: fade
 glowHue: 150
@@ -369,6 +376,14 @@ glowHue: 150
 #  Shared prefix
 
 <img src="/Experiment/SharedPrefix.png" class="h-80%" />
+
+<!--
+- Model: llama-13B => multilingual
+- Dataset: WMT14
+
+3.58倍
+
+-->
 
 ---
 transition: fade
