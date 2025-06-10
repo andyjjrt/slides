@@ -12,6 +12,7 @@
     {"type":"directory","name":"1122cp2-lab2"},
     {"type":"directory","name":"1122cp2-lab5"},
     {"type":"directory","name":"1122cp2-mid"},
+    {"type":"directory","name":"ITSC-1132-final"},
     {"type":"directory","name":"VHELM"},
     {"type":"directory","name":"cat-mid"},
     {"type":"directory","name":"cat-w3"},
@@ -26,5 +27,5 @@
     {"type":"directory","name":"wsm-project3"}
   ]}
 ,
-  {"type":"report","directories":25,"files":0}
+  {"type":"report","directories":26,"files":0}
 ]
