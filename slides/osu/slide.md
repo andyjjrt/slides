@@ -9,15 +9,15 @@ fonts:
   sans: Outfit, Noto Sans TC
   mono: Ubuntu Mono
 ##########################
-title: osu
-name: test
+title: osu!
+name: osu
 themeConfig:
   glowHue: 100
 
 layout: iframe
 
 # the image source
-url: /osu.mp4
+url: /osu/osu.mp4
 ---
 
 <!--
@@ -27,7 +27,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 ---
 layout: iframe-left
 # the web page source
-url: /ruby.webm
+url: /osu/ruby.webm
 preload: false
 ---
 
@@ -82,12 +82,12 @@ preload: false
 <div grid grid-cols-2 class="h-2/3">
 
 <div>
-<iframe src="/bad_pp.mp4" class="w-full h-full" />
+<iframe src="/osu/bad_pp.mp4" class="w-full h-full" />
 <p v-click="1" text-4xl>197PP, 1:30, Harder</p>
 </div>
 
 <div>
-<iframe src="/good_pp.mp4" class="w-full h-full" />
+<iframe src="/osu/good_pp.mp4" class="w-full h-full" />
 <p v-click="1" text-4xl>189PP, 1:00, Easy</p>
 </div>
 
@@ -95,6 +95,6 @@ preload: false
 
 ---
 layout: iframe
-url: /100acc.mp4
+url: /osu/100acc.mp4
 preload: false
 ---
