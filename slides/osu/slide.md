@@ -1,6 +1,6 @@
 ---
 theme: default
-download: true
+download: false
 transition: slide-up
 routerMode: hash
 hideInToc: true
