@@ -20,6 +20,7 @@
     {"type":"directory","name":"cybersec2024-agenda"},
     {"type":"directory","name":"cybersec2024-final"},
     {"type":"directory","name":"llama3"},
+    {"type":"directory","name":"osu"},
     {"type":"directory","name":"page-attention"},
     {"type":"directory","name":"summer_school_w3"},
     {"type":"directory","name":"summer_school_w4"},
@@ -27,5 +28,5 @@
     {"type":"directory","name":"wsm-project3"}
   ]}
 ,
-  {"type":"report","directories":26,"files":0}
+  {"type":"report","directories":27,"files":0}
 ]
