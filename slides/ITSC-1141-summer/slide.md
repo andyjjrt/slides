@@ -8,6 +8,7 @@ mdc: true
 fonts:
   sans: Outfit, Noto Sans TC
   mono: Ubuntu Mono
+baseURL: https://slidev.andyjjrt.cc/
 ##########################
 title: ITSC 1141 Summer
 name: ITSC-1141-summer
