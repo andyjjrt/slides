@@ -44,9 +44,6 @@ jobs:
         run: |
           cd slidev-workspace/packages/slidev-workspace
           pnpm build
-          pnpm link --global
-          cd ../../..
-          pnpm link --global slidev-workspace
 
       - name: Install dependencies
         run: pnpm install
