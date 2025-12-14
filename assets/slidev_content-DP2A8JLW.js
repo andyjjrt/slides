@@ -1,1 +1,0 @@
-const e=[];var t=e;export{t as default,e as slidesData};
