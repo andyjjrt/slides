@@ -1,0 +1,10 @@
+pre[class*='language-'] {
+  @apply p-2;
+}
+
+:not(pre) > code {
+  font-size: 0.9em;
+  background: var(--syntax-bg);
+  color: var(--syntax-fg);
+  @apply font-light py-0.5 px-1 rounded;
+}

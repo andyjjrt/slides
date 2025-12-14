@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
     "preview": "slidev-workspace preview",
     "build": "slidev-workspace build",
     "export-og": "slidev-workspace export-og"
