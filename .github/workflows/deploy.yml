@@ -31,6 +31,17 @@ jobs:
       - name: Setup @antfu/ni
         run: npm i -g @antfu/ni
 
+      - name: Install slidev-workspace dependencies
+        run: cd slidev-workspace && nci
+
+      - name: Build and link slidev-workspace
+        run: |
+          cd slidev-workspace/packages/slidev-workspace
+          pnpm build
+          pnpm link --global
+          cd ../../..
+          pnpm link --global slidev-workspace
+
       - name: Install dependencies
         run: nci
 
