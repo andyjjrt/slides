@@ -1,19 +1,15 @@
 ---
-theme: default
-download: true
-transition: slide-up
-routerMode: hash
-hideInToc: true
-mdc: true
-fonts:
-  sans: Outfit, Noto Sans TC
-  mono: Ubuntu Mono
+theme: ../theme
 baseURL: https://slidev.andyjjrt.cc/
 ##########################
 title: Efficient Memory Management for Large Language Model Serving with PagedAttention
 name: page-attention
 themeConfig:
   glowHue: -30
+addons:
+  - ../addons/back-to-home
+  - ../addons/background-animation
+  - ../addons/page-number
 ---
 
 SOSP 2023
