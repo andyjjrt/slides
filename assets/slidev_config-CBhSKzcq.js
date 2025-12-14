@@ -1,0 +1,1 @@
+const e={hero:{title:`My Slide Collection`,description:`Browse all available slide decks and use the search function to quickly find what you need`}};var t=e;export{e as configData,t as default};
