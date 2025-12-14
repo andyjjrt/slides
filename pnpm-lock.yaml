@@ -74,6 +74,21 @@ importers:
         specifier: ^3.5.25
         version: 3.5.25(typescript@5.9.3)
 
+  slides/page-attention:
+    dependencies:
+      '@slidev/cli':
+        specifier: ^52.11.0
+        version: 52.11.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.2)(@types/markdown-it@14.1.2)(@types/node@22.19.3)(@vue/compiler-sfc@3.5.25)(lightningcss@1.30.2)(markdown-it-async@2.2.0)(playwright-chromium@1.57.0)(postcss@8.5.6)
+      '@slidev/theme-default':
+        specifier: latest
+        version: 0.25.0
+      '@slidev/theme-seriph':
+        specifier: latest
+        version: 0.25.0
+      vue:
+        specifier: ^3.5.25
+        version: 3.5.25(typescript@5.9.3)
+
   theme:
     dependencies:
       '@slidev/types':
