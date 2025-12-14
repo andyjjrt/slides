@@ -28,14 +28,16 @@ jobs:
         with:
           node-version: 24
 
-      - name: Setup @antfu/ni
-        run: npm i -g @antfu/ni
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
 
       - name: Install slidev-workspace dependencies
         run: |
           cd slidev-workspace
           echo -e 'onlyBuiltDependencies:\n  - "@tailwindcss/oxide"\n  - esbuild' > .npmrc
-          nci
+          pnpm install
           rm .npmrc
 
       - name: Build and link slidev-workspace
@@ -47,7 +49,7 @@ jobs:
           pnpm link --global slidev-workspace
 
       - name: Install dependencies
-        run: nci
+        run: pnpm install
 
       - name: Prepare deploy folder
         run: rm -rf dist && mkdir dist
