@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: 'true'
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -51,8 +52,14 @@ jobs:
 
       - name: Identify changed slides
         id: changes
+        working-directory: ${{ github.workspace }}
         run: |
-          files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq | paste -sd "," -)
+          if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            # First push or new branch - build all slides
+            files=$(ls -d slides/*/ 2>/dev/null | sed 's|^slides/||' | sed 's|/$||' | paste -sd "," -)
+          else
+            files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq | paste -sd "," -)
+          fi
           echo "slides_files<<EOF" >> $GITHUB_OUTPUT
           echo $files >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
