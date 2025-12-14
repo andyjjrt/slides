@@ -32,7 +32,8 @@
       "fonts": {
         "sans": "Outfit, Noto Sans TC",
         "mono": "Ubuntu Mono"
-      }
+      },
+      "baseURL": "https://slidev.andyjjrt.cc/"
     }
   }
 }

@@ -1,6 +1,5 @@
 ---
-theme: ../theme
-baseURL: https://slidev.andyjjrt.cc/
+theme: ../../theme
 ##########################
 title: Efficient Memory Management for Large Language Model Serving with PagedAttention
 name: page-attention
