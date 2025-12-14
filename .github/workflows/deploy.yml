@@ -22,82 +22,78 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: 'recursive'
-      
-      - name: "test"
+          submodules: 'true'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup @antfu/ni
+        run: npm i -g @antfu/ni
+
+      - name: Install slidev-workspace dependencies
+        run: cd slidev-workspace && nci
+
+      - name: Build and link slidev-workspace
         run: |
-          ls -la
+          cd slidev-workspace/packages/slidev-workspace
+          pnpm build
+          pnpm link --global
+          cd ../../..
+          pnpm link --global slidev-workspace
 
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 24
+      - name: Install dependencies
+        run: nci
 
-      # - name: Setup @antfu/ni
-      #   run: npm i -g @antfu/ni
+      - name: Prepare deploy folder
+        run: rm -rf dist && mkdir dist
 
-      # - name: Install slidev-workspace dependencies
-      #   run: cd slidev-workspace && nci
+      - name: Identify changed slides
+        id: changes
+        run: |
+          files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq | paste -sd "," -)
+          echo "slides_files<<EOF" >> $GITHUB_OUTPUT
+          echo $files >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
-      # - name: Build and link slidev-workspace
-      #   run: |
-      #     cd slidev-workspace/packages/slidev-workspace
-      #     pnpm build
-      #     pnpm link --global
-      #     cd ../../..
-      #     pnpm link --global slidev-workspace
+      - name: Build slides and preview app as index
+        run: |
+          slides_folders="${{ steps.changes.outputs.slides_files }}"
+          pnpm build $slides_folders
 
-      # - name: Install dependencies
-      #   run: nci
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
-      # - name: Prepare deploy folder
-      #   run: rm -rf dist && mkdir dist
+      - name: Identify unchanged folder
+        id: not_changed
+        run: |
+          files="${{ steps.changes.outputs.slides_files }}"
+          if [ -n "$files" ]; then
+              echo "Result is not empty:"
+          else
+              files=$(ls -d slides/*)
+          fi
+          N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}'))
+          if [ -n "$N_FILES" ]; then
+              echo "N_FILES<<EOF" >> $GITHUB_ENV
+              for files in $N_FILES; do
+                echo "$files" >> $GITHUB_ENV
+                echo $files
+              done
+              echo "" >> $GITHUB_ENV
+              echo "EOF" >> $GITHUB_ENV
+          else
+              echo "N_FILES<<EOF" >> $GITHUB_ENV
+              echo "" >> $GITHUB_ENV
+              echo "EOF" >> $GITHUB_ENV
+          fi
+          echo $N_FILES
 
-      # - name: Identify changed slides
-      #   id: changes
-      #   run: |
-      #     files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq | paste -sd "," -)
-      #     echo "slides_files<<EOF" >> $GITHUB_OUTPUT
-      #     echo $files >> $GITHUB_OUTPUT
-      #     echo "EOF" >> $GITHUB_OUTPUT
-
-      # - name: Build slides and preview app as index
-      #   run: |
-      #     slides_folders="${{ steps.changes.outputs.slides_files }}"
-      #     pnpm build $slides_folders
-
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: dist
-
-      # - name: Identify unchanged folder
-      #   id: not_changed
-      #   run: |
-      #     files="${{ steps.changes.outputs.slides_files }}"
-      #     if [ -n "$files" ]; then
-      #         echo "Result is not empty:"
-      #     else
-      #         files=$(ls -d slides/*)
-      #     fi
-      #     N_FILES=$(echo "$files" | awk '{OFS="\n"; $1=$1}1' | grep -v -f - <(ls -d slides/* | awk -F'/' '{print $NF}'))
-      #     if [ -n "$N_FILES" ]; then
-      #         echo "N_FILES<<EOF" >> $GITHUB_ENV
-      #         for files in $N_FILES; do
-      #           echo "$files" >> $GITHUB_ENV
-      #           echo $files
-      #         done
-      #         echo "" >> $GITHUB_ENV
-      #         echo "EOF" >> $GITHUB_ENV
-      #     else
-      #         echo "N_FILES<<EOF" >> $GITHUB_ENV
-      #         echo "" >> $GITHUB_ENV
-      #         echo "EOF" >> $GITHUB_ENV
-      #     fi
-      #     echo $N_FILES
-
-      # - name: Deploy
-      #   uses: JamesIves/github-pages-deploy-action@releases/v4
-      #   with:
-      #     folder: dist
-      #     clean-exclude: |
-      #       ${{ env.N_FILES }}
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          folder: dist
+          clean-exclude: |
+            ${{ env.N_FILES }}
