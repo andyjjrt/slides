@@ -1,0 +1,3 @@
+[submodule "slidev-workspace"]
+	path = slidev-workspace
+	url = git@github.com:andyjjrt/slidev-workspace.git

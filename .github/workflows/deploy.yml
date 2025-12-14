@@ -1,59 +1,57 @@
-name: Build Slide
+name: Deploy pages
 
 on:
+  workflow_dispatch:
   push:
-    paths:
-      - 'slides/**'
+    branches: [main]
+  pull_request:
+
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-        with: 
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v4
         with:
-          version: 8
+          node-version: 24
 
-      - name: Install
-        run: pnpm install
+      - name: Setup @antfu/ni
+        run: npm i -g @antfu/ni
 
-      - name: Create Directory
-        run: |
-          mkdir dist
-          cd slides
-          find . -type d -exec mkdir -p ${{ github.workspace }}/dist/{} \;
-          cd ${{ github.workspace }}
+      - name: Install dependencies
+        run: nci
 
-      - name: Identify changed slides folder
+      - name: Prepare deploy folder
+        run: rm -rf dist && mkdir dist
+
+      - name: Identify changed slides
         id: changes
         run: |
-          files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq)
+          files=$(git diff --name-only --diff-filter=ACMRTUXB ${{ github.event.before }} ${{ github.sha }} | grep '^slides/' | sed 's|^slides/\([^/]*\)/.*$|\1|' | uniq | paste -sd "," -)
           echo "slides_files<<EOF" >> $GITHUB_OUTPUT
           echo $files >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Build target file in slides folder
-        if: ${{ steps.changes.outputs.slides_files }}
+      - name: Build slides and preview app as index
         run: |
           slides_folders="${{ steps.changes.outputs.slides_files }}"
+          pnpm build $slides_folders
 
-          for folder in $slides_folders; do
-            pnpm run slidev:build slides/$folder/slide.md --out ${{ github.workspace }}/dist/$folder --base /$folder/
-            echo $folder
-          done
-      
-      - name: Check dist
-        if: ${{ steps.changes.outputs.slides_files }}
-        run: ls -la dist
-
-      - name: Update slides.json
-        run: tree -J -L 1 slides -o ${{ github.workspace }}/dist/slides.json
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
       - name: Identify unchanged folder
         id: not_changed
@@ -86,7 +84,3 @@ jobs:
           folder: dist
           clean-exclude: |
             ${{ env.N_FILES }}
-            /assets
-            /index.html
-            /vite.svg
-            

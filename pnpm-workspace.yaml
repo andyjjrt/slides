@@ -1,0 +1,11 @@
+packages:
+  - slides/*
+  - theme
+  - addons/*
+
+onlyBuiltDependencies:
+  - esbuild
+  - playwright-chromium
+
+overrides:
+  slidev-workspace: link:slidev-workspace/packages/slidev-workspace

@@ -1,5 +1,5 @@
 {
-  "name": "slidev-addon-template",
+  "name": "page-number",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,10 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@slidev/cli": "^0.48.1"
-  },
-  "engines": {
-    "slidev": ">=0.48.1"
-  }
+  "packageManager": "pnpm@10.25.0"
 }
