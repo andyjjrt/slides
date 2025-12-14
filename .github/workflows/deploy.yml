@@ -32,7 +32,11 @@ jobs:
         run: npm i -g @antfu/ni
 
       - name: Install slidev-workspace dependencies
-        run: cd slidev-workspace && pnpm install --config.onlyBuiltDependencies="@tailwindcss/oxide" --config.onlyBuiltDependencies="esbuild"
+        run: |
+          cd slidev-workspace
+          echo -e 'onlyBuiltDependencies:\n  - "@tailwindcss/oxide"\n  - esbuild' > .npmrc
+          nci
+          rm .npmrc
 
       - name: Build and link slidev-workspace
         run: |
