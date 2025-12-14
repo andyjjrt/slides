@@ -32,7 +32,7 @@ jobs:
         run: npm i -g @antfu/ni
 
       - name: Install slidev-workspace dependencies
-        run: cd slidev-workspace && nci
+        run: cd slidev-workspace && pnpm install --config.onlyBuiltDependencies="@tailwindcss/oxide" --config.onlyBuiltDependencies="esbuild"
 
       - name: Build and link slidev-workspace
         run: |
