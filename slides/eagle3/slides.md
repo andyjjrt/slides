@@ -1,7 +1,7 @@
 ---
 theme: ../../theme
 ############################
-title: EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty
+title: "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty"
 name: eagle3
 themeConfig:
   glowHue: 100
