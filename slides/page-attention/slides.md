@@ -249,9 +249,8 @@ transition: fade
 # Scheduling and Preemption
 
 1. Which blocks should it evict?
-- Apply **all-or-nothing** eviction policy
-  - Multiple sequences within one request are gang-scheduled as a **Sequence Group**.
-
+   - Apply **all-or-nothing** eviction policy
+      - Multiple sequences within one request are gang-scheduled as a **Sequence Group**.
 
 ---
 transition: fade
@@ -259,26 +258,14 @@ transition: fade
 
 # Scheduling and Preemption
 
-1. &nbsp;
-2. How to recover evicted blocks if needed again?
-  - **Swapping**
-    - Classic technique used by most virtual memory implementations
-    - Selects a set of sequences to evict and transfer their KV cache to the CPU, and stop accepting new requests.
-    - Bring back and continue the processing of that sequence.
-  - **Recomputation**
-    - Recompute the KV cache when the preempted sequences are rescheduled.
-    - Recomputation latency can be significantly lower than the original latency because they are in the Sequence Group.
-
-<style>
-
-ol {
-  li:first-child {
-    list-style: none;
-    height: 0px;
-  }
-}
-
-</style>
+1. How to recover evicted blocks if needed again?
+   - **Swapping**
+     - Classic technique used by most virtual memory implementations
+     - Selects a set of sequences to evict and transfer their KV cache to the CPU, and stop accepting new requests.
+     - Bring back and continue the processing of that sequence.
+   - **Recomputation**
+     - Recompute the KV cache when the preempted sequences are rescheduled.
+     - Recomputation latency can be significantly lower than the original latency because they are in the Sequence Group.
 
 ---
 transition: fade
@@ -329,7 +316,6 @@ glowHue: 150
 - **Key metrics**: *normalized latency* of the system
 
 <img src="/Experiment/Setup.png"  class="abs-tr top-24 right-5 w-96" />
-
 
 <!--
 - 13B, 66B: common size, 175B: GPT3

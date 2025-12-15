@@ -1,7 +1,95 @@
 :root {
-  /* default theme color */
-  /* can be overrided by uses `themeConfig` option */
-  --slidev-theme-primary: #5d8392;
+  --slidev-code-font-size: 16px;
+  --slidev-code-line-height: 22px;
+}
+
+.slidev-layout {
+  @apply h-full font-size-4.5 p-8; 
+
+  h1 + p {
+    @apply -mt-2 opacity-50 mb-4;
+  }
+
+  p + h2, ul + h2, table + h2 {
+    @apply mt-10;
+  }
+
+  h1 {
+    @apply text-4xl mb-4 -ml-[0.05em] font-bold;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-base;
+  }
+
+  h6 {
+    @apply text-sm pt-1 uppercase tracking-widest font-500 -ml-[0.05em];
+  }
+
+  h6:not(.opacity-100) {
+    @apply opacity-40;
+  }
+
+  pre, code {
+    @apply select-text;
+  }
+
+  code {
+    @apply font-mono;
+  }
+
+  p {
+    @apply my-4 leading-6;
+  }
+
+  ol {
+    @apply pl-5 list-decimal relative;
+  }
+
+  ul {
+    @apply pl-5 list-disc relative;
+  }
+
+  table {
+    @apply w-full;
+  }
+
+  tr {
+    @apply border-b border-gray-400 border-opacity-20;
+  }
+
+  th {
+    @apply text-left font-400;
+  }
+
+  a {
+    @apply border-current border-b border-dashed hover:text-$slidev-theme-primary hover:border-solid;
+  }
+
+  td, th {
+    @apply p-2 py-3;
+  }
+
+  b, strong {
+    @apply font-600;
+  }
+
+  kbd {
+    @apply border border-gray-400 border-b-2 border-opacity-20 rounded;
+    @apply bg-gray-400 bg-opacity-5 py-0.5 px-1 text-sm font-mono;
+  }
 }
 
 .slidev-layout.cover,
@@ -11,14 +99,35 @@
   h1 {
     @apply text-6xl leading-20;
   }
+}
+
+
+.slidev-layout.fact {
+  @apply text-center grid h-full;
+  h1 {
+    @apply text-8xl font-700;
+  }
+  h1 + p {
+    @apply font-700 text-2xl;
+  }
+}
+.slidev-layout.statement {
+  @apply text-center grid h-full;
+
+  h1 {
+    @apply text-6xl font-700;
+  }
+}
+.slidev-layout.quote {
+  @apply grid h-full;
 
   h1 + p {
-    @apply -mt-2 opacity-50 mb-4;
+    @apply mt-2;
   }
-
-  p + h2,
-  ul + h2,
-  table + h2 {
-    @apply mt-10;
+}
+.slidev-layout.section {
+  @apply flex items-center justify-center;
+  h1 {
+    @apply text-6xl font-500 leading-20;
   }
 }

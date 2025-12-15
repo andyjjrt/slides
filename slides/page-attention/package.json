@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "VITE_EXPORT=0 slidev build",
+    "build": "func() { slidev build \"$@\" && VITE_EXPORT=1 slidev export --output dist/slidev-exported; }; func",
     "dev": "slidev --open",
     "export": "slidev export"
   },
