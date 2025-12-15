@@ -1,0 +1,1 @@
+import{f as o,o as t,j as s}from"../modules/vue-CVDKllWo.js";import{_ as c}from"../index-BroGBwX_.js";const r={},n={class:"slidev-layout section"};function a(e,_){return t(),o("div",n,[s(e.$slots,"default")])}const f=c(r,[["render",a]]);export{f as I};
