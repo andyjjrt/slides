@@ -59,7 +59,7 @@ importers:
         specifier: ^3.5.25
         version: 3.5.25(typescript@5.9.3)
 
-  slides/Eagle3:
+  slides/eagle3:
     dependencies:
       '@slidev/cli':
         specifier: ^52.11.0
