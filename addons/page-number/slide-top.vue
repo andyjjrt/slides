@@ -4,7 +4,7 @@
   </footer>
   <div class="abs-br m-6" v-else>
     <a
-      :href="$slidev.configs.name"
+      :href="$slidev.configs.baseUrl + '/' + $slidev.configs.name"
       target="_blank"
       class="text-xl icon-btn flex items-center gap-2 !border-none hover:text-black dark:hover:text-gray cursor-pointer"
     >
