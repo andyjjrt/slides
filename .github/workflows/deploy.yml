@@ -45,7 +45,7 @@ jobs:
           pnpm build
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Prepare deploy folder
         run: rm -rf dist && mkdir dist
