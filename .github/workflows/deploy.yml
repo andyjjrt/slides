@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # playwright 1.57 has no chromium for ubuntu 26.04
     steps:
       - uses: actions/checkout@v4
         with:
