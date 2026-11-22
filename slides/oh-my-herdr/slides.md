@@ -15,6 +15,7 @@ mdc: true
 drawings:
   persist: false
 duration: 15min
+download: true
 ---
 
 # oh-my-herdr
