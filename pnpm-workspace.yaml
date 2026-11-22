@@ -3,9 +3,14 @@ packages:
   - theme
   - addons/*
 
+allowBuilds:
+  esbuild: true
+  playwright-chromium: true
+  vue-demi: false
+
 onlyBuiltDependencies:
   - esbuild
   - playwright-chromium
 
-overrides:
-  slidev-workspace: link:slidev-workspace/packages/slidev-workspace
+ignoredBuiltDependencies:
+  - vue-demi

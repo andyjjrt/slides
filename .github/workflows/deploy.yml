@@ -18,8 +18,6 @@ jobs:
     runs-on: ubuntu-24.04 # playwright 1.57 has no chromium for ubuntu 26.04
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
 
       - uses: pnpm/action-setup@v4
         with:
@@ -28,14 +26,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-
-      - name: Build slidev-workspace (submodule)
-        working-directory: slidev-workspace
-        run: |
-          printf 'onlyBuiltDependencies:\n  - "@tailwindcss/oxide"\n  - esbuild\n' > .npmrc
-          pnpm install
-          rm .npmrc
-          pnpm --dir packages/slidev-workspace build
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
