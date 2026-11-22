@@ -1,0 +1,39 @@
+/* Shared by the story slides (pages/story.md). */
+.story-card { padding: 20px 24px; border-radius: 12px; border: 1.5px solid color-mix(in srgb, currentColor 40%, transparent); background: color-mix(in srgb, currentColor 5%, transparent); }
+.story-card b { font-size: 21px; }
+.story-card p { margin: 8px 0 0; font-size: 16px; opacity: 0.75; line-height: 1.45; }
+.dense .story-card { padding: 13px 20px; }
+.dense .story-card p { margin-top: 4px; }
+
+/* Icon list: rows with a coloured icon, no boxes. */
+.icon-list { display: grid; gap: 14px; margin-top: 1.4rem; text-align: left; }
+.icon-list.cols-3 { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.icon-list > div { display: grid; grid-template-columns: 40px auto; column-gap: 12px; align-items: center; }
+.icon-list .il-i { font-size: 30px; grid-row: span 2; }
+.icon-list b { font-size: 20px; }
+.icon-list span { font-size: 15px; opacity: 0.7; }
+
+/* Feature grid: big accent icons, separated by thin rules. */
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 1.2rem; text-align: left; }
+.feature-grid > div { display: flex; flex-direction: column; gap: 4px; padding: 14px 18px; border-left: 3px solid color-mix(in srgb, #6366f1 55%, transparent); margin-bottom: 14px; }
+.feature-grid .fg-i { font-size: 28px; color: #6366f1; margin-bottom: 4px; }
+.feature-grid b { font-size: 19px; }
+.feature-grid span { font-size: 14px; opacity: 0.7; }
+
+/* Rules: one line each, big icon, strong statement. */
+.rules { display: flex; flex-direction: column; margin-top: 1.4rem; text-align: left; }
+.rules > div { display: grid; grid-template-columns: 48px 200px 1fr; align-items: center; padding: 16px 6px; border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); }
+.rules .r-i { font-size: 28px; color: #ef4444; }
+.rules b { font-size: 22px; }
+.rules span { font-size: 16px; opacity: 0.75; }
+
+/* Roadmap: done column vs next column. */
+.roadmap { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: stretch; margin-top: 1.2rem; text-align: left; }
+.rm-arrow { align-self: center; text-align: center; font-size: 28px; opacity: 0.5; }
+.rm-col { display: flex; flex-direction: column; gap: 10px; }
+.rm-h { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; margin-bottom: 4px; }
+.rm-col.done .rm-h { color: #10b981; }
+.rm-col.next .rm-h { color: #f59e0b; }
+.rm-i { display: flex; flex-direction: column; font-size: 13px; opacity: 0.85; padding: 6px 0 6px 14px; border-left: 3px solid #10b981; }
+.rm-col.next .rm-i { border-left: 3px dashed #f59e0b; }
+.rm-i b { font-size: 16px; opacity: 1; }
