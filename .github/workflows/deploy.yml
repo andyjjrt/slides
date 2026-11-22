@@ -45,6 +45,11 @@ jobs:
       - name: Build all slides
         run: pnpm build
 
+      # Pages only serves the root 404.html; it loads the deck's index.html so
+      # deep links like /<deck>/21 work.
+      - name: Add SPA fallback
+        run: cp .github/pages-404.html dist/404.html
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

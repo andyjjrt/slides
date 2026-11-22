@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loading…</title>
+  <script>
+    // GitHub Pages serves this file for any missing path. Slidev decks use
+    // history routing (/<deck>/<page>), so load the deck's index.html in place
+    // and let its router read the current URL.
+    (function () {
+      var deck = location.pathname.split("/")[1];
+      function notFound() {
+        document.title = "404";
+        document.body.innerHTML =
+          '<p style="font-family:sans-serif;text-align:center;margin-top:20vh">404 · <a href="/">回到首頁</a></p>';
+      }
+      if (!deck) return notFound();
+      fetch("/" + deck + "/index.html")
+        .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+        .then(function (html) { document.open(); document.write(html); document.close(); })
+        .catch(notFound);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
